@@ -3,7 +3,7 @@
  * Author:		Annie Wu
  * Class:		CS 241 - Data Structures and Algorithms II
  * 
- * Assignment:	Program 1
+ * Assignment:		Program 1
  * Date:		22 January 2018
  * 
  * Purpose:	This program has the main class that contains all
@@ -20,11 +20,11 @@ public class Program1 {
 	private static String postorder = "\nPostorder: ";
 	private static String command = "\nCommand? ";
 	private static String choices = " I Insert a value" +
-									"\n D Delete a value" +
-									"\n P Find predecessor" +
-									"\n S Find sucessor" +
-									"\n E Exit the program" +
-									"\n H Display this message";
+					"\n D Delete a value" +
+					"\n P Find predecessor" +
+					"\n S Find sucessor" +
+					"\n E Exit the program" +
+					"\n H Display this message";
 	private static String thankyou = "Thank you for using my program!";
 	private static String invalid = "Invalid Entry. Please try again.";
 	private static String error = "Error: Not an Integer Value.";
