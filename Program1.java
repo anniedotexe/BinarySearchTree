@@ -6,8 +6,8 @@
  * Assignment:		Program 1
  * Date:		22 January 2018
  * 
- * Purpose:	This program has the main class that contains all
- * the user interactions.
+ * Purpose:		This program has the main class that contains all
+ * 			the user interactions.
  */
 
 import java.util.*;
