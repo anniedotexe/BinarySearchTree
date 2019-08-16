@@ -3,11 +3,10 @@
  * Author:		Annie Wu
  * Class:		CS 241 - Data Structures and Algorithms II
  * 
- * Assignment:	Program 1
+ * Assignment:	    Program 1
  * Date:		22 January 2018
  * 
- * Purpose:		This class contains the nodes in the BST and 
- * 			    any functions regarding the nodes.
+ * Purpose:		This class contains the nodes in the BST and any functions regarding the nodes.
  */
 
 public class Node {
