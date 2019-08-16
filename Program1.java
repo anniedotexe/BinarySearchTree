@@ -1,13 +1,13 @@
 /**
  * File:		Program1.java
- * Author:		Annie Wu
+ * @author		Annie Wu
  * Class:		CS 241 - Data Structures and Algorithms II
  * 
- * Assignment:		Program 1
+ * Assignment:	Program 1
  * Date:		22 January 2018
  * 
  * Purpose:		This program has the main class that contains all
- * 			the user interactions.
+ * 				the user interactions.
  */
 
 import java.util.*;
@@ -19,12 +19,12 @@ public class Program1 {
 	private static String inorder = "\nInorder: ";
 	private static String postorder = "\nPostorder: ";
 	private static String command = "\nCommand? ";
-	private static String choices = " I Insert a value" +
-					"\n D Delete a value" +
-					"\n P Find predecessor" +
-					"\n S Find sucessor" +
-					"\n E Exit the program" +
-					"\n H Display this message";
+	private static String choices = "\n I. Insert a value" +
+									"\n D. Delete a value" +
+									"\n P. Find predecessor" +
+									"\n S. Find successor" +
+									"\n E. Exit the program" +
+									"\n H. Display this message";
 	private static String thankyou = "Thank you for using my program!";
 	private static String invalid = "Invalid Entry. Please try again.";
 	private static String error = "Error: Not an Integer Value.";
@@ -38,7 +38,7 @@ public class Program1 {
 		
 		BST bst = new BST(); 
 		System.out.println(initial);
-		
+
 		try {
 			//for the initial integers entered
 			//while there is a next integer, insert it into the BST
@@ -46,6 +46,7 @@ public class Program1 {
 			if (sc.hasNextLine()) {
 				String line = sc.nextLine();
 				Scanner scanLine = new Scanner(line);
+
 				while (scanLine.hasNextInt()) {
 					bst.insert(scanLine.nextInt());
 				}
@@ -64,40 +65,42 @@ public class Program1 {
 		bst.inorder();
 		System.out.print(postorder);
 		bst.postorder();
-		
+		System.out.print("\n" + choices);
+
 		boolean run = true;
-		while (run == true) {
+		while (run) {
 			try {
 				System.out.print(command);          
 				String choice = sc.next().toUpperCase();
 				switch (choice) {
-				case "H":
-					System.out.print(choices); 
-					break;
-				case "I": 
+
+				case "I": //insert
 					int value = sc.nextInt();
 					bst.insert(value);
 					System.out.print(inorder);
 					bst.inorder();
 	                break;
-	            case "D":
+	            case "D": //delete
 					value = sc.nextInt();
 					bst.delete(value);
 					System.out.print(inorder);
 					bst.inorder();
 					break;                         
-				case "P": 
+				case "P": //predecessor
 					value = sc.nextInt();
 					bst.predecessor(value);
 					break;
-				case "S": 
+				case "S": //successor
 					value = sc.nextInt();
 					bst.successor(value);
 					break;
-				case "E":
-					System.out.println(thankyou);
+				case "E": //exit
+					System.out.println("\n" + thankyou);
 					run = false;
-					break;   
+					break;
+				case "H": //help menu
+					System.out.print(choices);
+					break;
 				default:
 					System.out.println(invalid);
 				}

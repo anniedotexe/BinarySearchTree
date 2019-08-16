@@ -3,11 +3,11 @@
  * Author:		Annie Wu
  * Class:		CS 241 - Data Structures and Algorithms II
  * 
- * Assignment:		Program 1
+ * Assignment:	Program 1
  * Date:		22 January 2018
  * 
  * Purpose:		This class contains the binary search tree (BST) 
- * 			and any functions regarding the BST.
+ * 				and any functions regarding the BST.
  */
 
 public class BST {
@@ -17,6 +17,7 @@ public class BST {
 	private String alreadyInTree = " is already in the binary search tree!";
 	private String emptyTree = "The binary search tree is empty!";
 	private String doesNotExist = " does not exist in the binary search tree.";
+	private String inserted = " has been inserted into the binary search tree.";
 	private String deleted = " has been deleted from the binary search tree.";
 	private String predecessor = "The predecessor is ";
 	private String noPredecessor = " does not have a predecessor.";
@@ -36,6 +37,7 @@ public class BST {
 	 * This is the constructor when the user inputs a value.
 	 * The purpose is to create a new node with that value and 
 	 * set it as the root node.
+	 * @param rootEntry new root node
 	 */
 	public BST(int rootEntry) {
 		root = new Node(rootEntry);
@@ -45,7 +47,7 @@ public class BST {
 	 * This is the function insert.
 	 * The purpose is to take an integer to insert into the BST
 	 * and call the recursive insert function.
-	 * 
+	 * @param value given value to insert
 	 */
 	public void insert(int value) {
 		this.root = insert(this.root, value);
@@ -54,11 +56,15 @@ public class BST {
 	/**
 	 * This is the function insert. 
 	 * The purpose is to recursively insert a node and its value into the BST.
+	 * @param root current node
+	 * @param value given value to insert
+	 * @return node that is inserted
 	 */
 	 public Node insert(Node root, int value) {
 	        //if the BST is empty, it will add a new node
 	        if (root == null) {
 	            root = new Node(value);
+				System.out.println(value + inserted);
 	            return root;
 	        }
 	        //recursively call insert to add the node into the BST
@@ -75,11 +81,12 @@ public class BST {
 	 * This is the function delete.
 	 * The purpose is to delete a value from the user and 
 	 * call the recursive delete function.
+	 * @param value given value to delete
 	 */
 	public void delete(int value) {
 		if (isEmpty()) 
 			System.out.println(emptyTree);
-		else if (search(value) == false)
+		else if (!search(value))
 			System.out.println(value + doesNotExist);
 		else {
 			root = delete(root, value);
@@ -90,8 +97,11 @@ public class BST {
 	/**
 	 * This is the function delete.
 	 * The purpose is to recursively delete a now and its value in the BST.
+	 * @param root current node
+	 * @param value given value to delete
+	 * @return node that is deleted
 	 */
-	public Node delete(Node root, int value) {
+	public Node delete(Node root, int value) throws NullPointerException{
 		if (root != null) {
 			//if the value is less than the root value
 			if (value < root.getValue())
@@ -127,6 +137,8 @@ public class BST {
 	/**
 	 * This is the function deleteMin.
 	 * The purpose is to delete the minimum value in the BST.
+	 * @param root current node
+	 * @return the minimum value that is deleted
 	 */
 	public Node deleteMin(Node root) {
 	    if(root.getLeft() == null) {
@@ -139,15 +151,15 @@ public class BST {
 	/**
 	 * This is the function predecessor.
 	 * The purpose is to get the inorder predecessor of the user's entry.
-	 * 
+	 * @param value given value
 	 */
 	public void predecessor(int value) {
 		//if tree is empty
 		if (isEmpty()) {
-			System.out.print(emptyTree);
+			System.out.println(emptyTree);
 		}
 		//if value does not exist in BST
-		else if (search(value) == false) {
+		else if (!search(value)) {
 			System.out.println(value + doesNotExist);
 		}
 		else
@@ -157,7 +169,9 @@ public class BST {
 	/**
 	 * This is the function predecessor.
 	 * The purpose is to get the inorder predecessor of the given node.
-	 * 
+	 * @param root current node
+	 * @param value given value
+	 * @return predecessor
 	 */
 	public Node predecessor(Node root, int value) {
 		Node pred = null;
@@ -172,32 +186,32 @@ public class BST {
 			}
 		}
 		
-		//NEED TO DO NO PREDECESSOR
+		//NEED TO DO IF THERE IS NO PREDECESSOR
 		
 		//it has a left subtree
 		if (root != null && root.getLeft() != null) {
 			root = root.getLeft();
 			pred = getRightmost(root);
-			System.out.print(predecessor + pred.getValue());
+			System.out.println(predecessor + pred.getValue());
 			return pred;
 		}
 		
-		System.out.print(predecessor + pred.getValue());
+		System.out.println(predecessor + pred.getValue());
 		return pred;
 	}
 	
 	/**
 	 * This is the function successor.
 	 * The purpose is to get the inorder successor of the user's entry.
-	 * 
+	 * @param value given value
 	 */
 	public void successor(int value) {
 		//if tree is empty
 		if (isEmpty()) {
-			System.out.print(emptyTree);
+			System.out.println(emptyTree);
 		}
 		//if value does not exist in BST
-		else if (search(value) == false) {
+		else if (!search(value)) {
 			System.out.println(value + doesNotExist);
 		}
 		else
@@ -207,7 +221,9 @@ public class BST {
 	/**
 	 * This is the function successor.
 	 * The purpose is to get the inorder successor of the given node.
-	 * 
+	 * @param root current node
+	 * @param value given value
+	 * @return successor
 	 */
 	public Node successor(Node root, int value) {
 		Node succ = null;
@@ -222,23 +238,25 @@ public class BST {
 			}
 		}
 		
-		//NEED TO DO NO SUCCESSOR
+		//NEED TO DO IF THERE IS NO SUCCESSOR
 		
 		//it has a right subtree
 		if (root != null && root.getRight() != null) {
 			root = root.getRight();
 			succ = getLeftmost(root);
-			System.out.print(successor + succ.getValue());
+			System.out.println(successor + succ.getValue());
 			return succ;
 		}
 		
-		System.out.print(successor + succ.getValue());
+		System.out.println(successor + succ.getValue());
 		return succ;
 	}
 	
 	/**
 	 * This if the function getLeftmost.
 	 * The purpose is to recursively get the leftmost node.
+	 * @param root current node
+	 * @return leftmost node
 	 */
 	public Node getLeftmost(Node root) {
 		if (!root.hasLeft())
@@ -250,6 +268,8 @@ public class BST {
 	/**
 	 * This is the function getRightmost.
 	 * The purpose is to recursively get the rightmost node.
+	 * @param root current node
+	 * @return rightmost node
 	 */
 	public Node getRightmost(Node root) {
 		if (!root.hasRight())
@@ -261,7 +281,8 @@ public class BST {
 	/**
 	 * This is the function search.
 	 * The purpose is to search for a value in the BST.
-	 * It will return true if found or false if it does not exist.
+	 * @param value given value
+	 * @return true if value exists
 	 */
 	public boolean search(int value) {
         return search(root, value);
@@ -270,17 +291,18 @@ public class BST {
 	/**
 	 * This is the function search.
 	 * The purpose is to recursively search for a given node and value in the BST.
-	 * It will return true if found or false if it does not exist.
+	 * @param node given node
+	 * @param value given value
+	 * @return value if it exists
 	 */
     public boolean search(Node node, int value) {
     	//start with the found node as false
     	boolean found = false;
-    	
+
     	if (node == null) {
         	found = false;
         }
         while ((node != null)) {
-        	found = false;
         	//get the value for the node
             int nodeValue = node.getValue();
             
@@ -308,15 +330,20 @@ public class BST {
      * This is the function searchForNode.
      * The purpose is to call the recursive function searchForNode
      * with the given value.
-     */
-    public Node searchForNode(int value) {
+	 * @param value given value
+	 * @return node of a given value
+	 */
+	public Node searchForNode(int value) {
     	return searchForNode(root, value);
     }
     
     /**
      * This is the function searchForNode.
      * The purpose is to recursively search for the node of the entered value.
-     */
+	 * @param node given node
+	 * @param value given value
+	 * @return node of a given value
+	 */
     public Node searchForNode(Node node, int value) {
     	Node found = null;
     	while ((node != null)) {
@@ -355,8 +382,9 @@ public class BST {
     /**
      * This is the function preorder.
      * The purpose is to recursively print the preorder traversal.
-     */
-    public void preorder(Node node) {
+	 * @param node current node
+	 */
+	public void preorder(Node node) {
         if (node != null) {
         	//first, process root
         	//then, process nodes in the left subtree recursively
@@ -379,8 +407,9 @@ public class BST {
     /**
      * This is the function inorder.
      * The purpose is to recursively print the inorder traversal.
-     */
-    public void inorder(Node node) {
+	 * @param node current node
+	 */
+	public void inorder(Node node) {
         if (node != null) {
         	//first, process nodes in the left subtree recursively
         	//then, process root
@@ -403,8 +432,9 @@ public class BST {
     /**
      * This is the function postorder.
      * The purpose is to recursively print the postorder traversal.
-     */
-    public void postorder(Node node) {
+	 * @param node current node
+	 */
+	public void postorder(Node node) {
         if (node != null) {
         	//first, process nodes in the left subtree recursively
         	//then, process nodes in the right subtree recursively
@@ -418,6 +448,7 @@ public class BST {
 	/**
 	 * This is the function isEmpty.
 	 * The purpose is to check to see if the tree is empty.
+	 * @return true if tree is empty
 	 */
 	public boolean isEmpty() {
 		return root == null;

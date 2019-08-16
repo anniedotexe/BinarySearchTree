@@ -3,11 +3,11 @@
  * Author:		Annie Wu
  * Class:		CS 241 - Data Structures and Algorithms II
  * 
- * Assignment:		Program 1
+ * Assignment:	Program 1
  * Date:		22 January 2018
  * 
  * Purpose:		This class contains the nodes in the BST and 
- * 			any functions regarding the nodes.
+ * 			    any functions regarding the nodes.
  */
 
 public class Node {
@@ -23,9 +23,11 @@ public class Node {
     public Node() {
         this(0);
     }
+
     /**
      * This is the constructor.
      * The purpose is to call the constructor with the given data and null nodes.
+     * @param data given value
      */
     public Node(int data) {
         this(data, null, null);
@@ -36,6 +38,9 @@ public class Node {
      * The purpose is to set the value to the data, 
      * set the left child to a new left child,
      * and set the right child to a new right child.
+     * @param data given value
+     * @param newLeft new left child
+     * @param newRight new right child
      */
     public Node(int data, Node newLeft, Node newRight) {
     	value = data;
@@ -46,7 +51,7 @@ public class Node {
     /**
      * This is the function hasLeft.
      * The purpose is to check to see if a left child exists.
-     * It will return true if it exists or false if it does not exist.
+     * @return true if left child exists
      */
     public boolean hasLeft() {
     	return left != null;
@@ -55,6 +60,7 @@ public class Node {
     /**
      * This is the function setLeft.
      * The purpose is to set the left node.
+     * @param node current node
      */
     public void setLeft(Node node) {
         left = node;
@@ -62,7 +68,8 @@ public class Node {
 
     /**
      * This is the function getLeft.
-     * The purpose is to return the left node. 
+     * The purpose is to return the left node.
+     * @return left node
      */
     public Node getLeft() {
         return left;
@@ -70,8 +77,8 @@ public class Node {
     
     /**
      * This is the function hasRight.
-     * The purpose is to check to see if a right child exists.
-     * It will return true if it exists or false if it does not exist.
+     * The purpose is to check to see if a right child exist.
+     * @return true if right child exists
      */
     public boolean hasRight() {
     	return right != null;
@@ -80,6 +87,7 @@ public class Node {
     /**
      * This is the function setRight.
      * The purpose is to set the right node.
+     * @param node current node
      */
     public void setRight(Node node) {
         right = node;
@@ -88,6 +96,7 @@ public class Node {
     /**
      * This is the function getRight.
      * The purpose is to return the right node.
+     * @return right node
      */
     public Node getRight() {
         return right;
@@ -96,6 +105,7 @@ public class Node {
     /**
      * This is the function setValue.
      * The purpose is to set value to a node.
+     * @param data value to give to a node
      */
     public void setValue(int data) {
         value = data;
@@ -104,6 +114,7 @@ public class Node {
     /**
      * This is the function getValue.
      * The purpose is to return the value of the node.
+     * @return value of the node
      */
     public int getValue() {
         return value;
@@ -112,8 +123,7 @@ public class Node {
     /**
      * This is the function isLeaf.
      * The purpose is to check to see if the node is a leaf.
-     * It will return true if it is a leaf or 
-     * false if the node has a left and/or right child.
+     * @return true if the node has no children
      */
     public boolean isLeaf() {
     	return (left == null) && (right == null);
@@ -122,6 +132,7 @@ public class Node {
     /**
      * This is the function getNumberOfNodes.
      * The purpose is to get the total number of nodes in the BST.
+     * @return number of nodes in the tree
      */
     public int getNumberOfNodes() {
     	int leftNodes = 0;
