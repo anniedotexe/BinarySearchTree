@@ -10,7 +10,7 @@ The commands the user can call are:
 <br>
 <i>The commands need to be called with a value after it.</i>
 
-####Sample Output
+#### Sample Output
 ```
 Please enter the initial sequence of values:
 51 40 21 38 32 8 27 9 28 36 3 48 13 44
