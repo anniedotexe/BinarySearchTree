@@ -1,5 +1,6 @@
 # Binary Search Tree
 The user will be prompted to enter a sequence of values separated by spaces. <br>
+
 The commands the user can call are:
 <li>I to insert a value</li>
 <li>D to delete a value</li>
