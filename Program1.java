@@ -1,6 +1,6 @@
 /**
  * File:		Program1.java
- * @author		Annie Wu
+ * Author:		Annie Wu
  * Class:		CS 241 - Data Structures and Algorithms II
  * 
  * Assignment:	Program 1
